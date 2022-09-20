@@ -4,6 +4,9 @@ public class Room implements Comparable<Room>
     private double length;
     private int floor;
 
+    /**
+     * Creates a room with default values of 12.5 x 10 with 1 floor.
+     */
     public Room()
     {
         this.width = 10;
@@ -11,17 +14,24 @@ public class Room implements Comparable<Room>
         this.floor = 1;
     }
 
+    /**
+     *
+     * @param d1 dimension 1 must be greater than 0.
+     * @param d2 dimension 2 must be greater than 0,
+     * @param floor number of floors.
+     * @throws IllegalArgumentException
+     */
     public Room(double d1, double d2, int floor)
     {
         if (d1 > d2)
         {
-            this.length = d1;
-            this.width = d2;
+            setLength(d1);
+            setWidth(d2);
         }
         else
         {
-            this.length = d2;
-            this.width = d1;
+            setLength(d2);
+            setWidth(d1);
         }
         this.floor = floor;
     }
@@ -30,11 +40,21 @@ public class Room implements Comparable<Room>
     {
         return width;
     }
-    public void setWidth(double width)
+
+    /**
+     *
+     * @param width must be greater than 0.
+     * @throws IllegalArgumentException
+     */
+    public void setWidth(double width) throws IllegalArgumentException
     {
         if (width > 0)
         {
             this.width = width;
+        }
+        else
+        {
+            throw new IllegalArgumentException("Invalid value " +  width);
         }
     }
 
@@ -42,11 +62,21 @@ public class Room implements Comparable<Room>
     {
         return length;
     }
-    public void setLength(double length)
+
+    /**
+     *
+     * @param length must be greater than 0.
+     * @throws IllegalArgumentException
+     */
+    public void setLength(double length) throws IllegalArgumentException
     {
         if (length > 0)
         {
             this.length = length;
+        }
+        else
+        {
+            throw new IllegalArgumentException("Invalid value " + length);
         }
     }
 
